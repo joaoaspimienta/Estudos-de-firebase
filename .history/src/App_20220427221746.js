@@ -24,16 +24,7 @@ function App() {
   }
 
   async function buscaPost(){
-    await firebase.firestore().collection('posts')
-    .doc('tuTKEq4Gtc2iEI9BXEGe')
-    .get()
-    .then((snapshot)=>{
-      setTitulo(snapshot.data().titulo)
-      setAutor(snapshot.data().autor)
-    })
-    .catch(()=>{
-      console.log('Deu algum erro')
-    })
+    
   }
 
   return (

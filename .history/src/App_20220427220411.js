@@ -6,8 +6,7 @@ function App() {
   const [titulo, setTitulo] = useState('')
   const [autor, setAutor] = useState('')
 
-  async function handleAdd(){
-    
+  function handleAdd(){
     await firebase.firestore().collection('posts')
     .add({
       titulo: titulo,
@@ -19,20 +18,7 @@ function App() {
       setAutor('')
     })
     .catch((error)=>{
-      alert('GEROU ALGUM ERRO: ' + error)
-    })
-  }
-
-  async function buscaPost(){
-    await firebase.firestore().collection('posts')
-    .doc('tuTKEq4Gtc2iEI9BXEGe')
-    .get()
-    .then((snapshot)=>{
-      setTitulo(snapshot.data().titulo)
-      setAutor(snapshot.data().autor)
-    })
-    .catch(()=>{
-      console.log('Deu algum erro')
+      console.log('GEROU ALGUM ERRO: ' + error)
     })
   }
 
@@ -49,7 +35,6 @@ function App() {
       <textarea type='text' value={autor} onChange={(e)=>setAutor(e.target.value)}/>
 
       <button onClick={ handleAdd }>Cadastrar</button>
-      <button onClick={ buscaPost }>Buscar Post</button>
 
       </div>
     </div>

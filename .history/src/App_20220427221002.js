@@ -6,7 +6,7 @@ function App() {
   const [titulo, setTitulo] = useState('')
   const [autor, setAutor] = useState('')
 
-  async function handleAdd(){
+  function handleAdd(){
     
     await firebase.firestore().collection('posts')
     .add({
@@ -23,19 +23,6 @@ function App() {
     })
   }
 
-  async function buscaPost(){
-    await firebase.firestore().collection('posts')
-    .doc('tuTKEq4Gtc2iEI9BXEGe')
-    .get()
-    .then((snapshot)=>{
-      setTitulo(snapshot.data().titulo)
-      setAutor(snapshot.data().autor)
-    })
-    .catch(()=>{
-      console.log('Deu algum erro')
-    })
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1><br/>
@@ -49,7 +36,6 @@ function App() {
       <textarea type='text' value={autor} onChange={(e)=>setAutor(e.target.value)}/>
 
       <button onClick={ handleAdd }>Cadastrar</button>
-      <button onClick={ buscaPost }>Buscar Post</button>
 
       </div>
     </div>
