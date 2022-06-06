@@ -38,7 +38,7 @@ function App() {
   } */
 
   async function buscaPost(){
-    await firebase.firestore().collection('posts')
+    await firebase.firestore.collection('posts')
     .get()
     .then((snapshot)=>{
       let lista = []

@@ -6,8 +6,7 @@ function App() {
   const [titulo, setTitulo] = useState('')
   const [autor, setAutor] = useState('')
 
-  async function handleAdd(){
-    
+  async function handleAdd(){    
     await firebase.firestore().collection('posts')
     .add({
       titulo: titulo,
@@ -24,7 +23,16 @@ function App() {
   }
 
   async function buscaPost(){
-    
+    await firebase.firestore().collection('posts')
+    .doc('tuTKEq4Gtc2iEI9BXEGe')
+    .get()
+    .then((snapshot)=>{
+      setTitulo(snapshot.data().titulo)
+      setAutor(snapshot.data().autor)
+    })
+    .catch(()=>{
+      console.log('Deu algum erro')
+    })
   }
 
   return (

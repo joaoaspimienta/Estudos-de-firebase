@@ -22,6 +22,7 @@ function App() {
       alert('GEROU ALGUM ERRO: ' + error)
     })
   }
+
 /*  async function handleAdd(){    
     await firebase.firestore().collection('posts')
     .doc('12345')
@@ -38,7 +39,7 @@ function App() {
   } */
 
   async function buscaPost(){
-    await firebase.firestore().collection('posts')
+    await firebase.firestore.collection('posts')
     .get()
     .then((snapshot)=>{
       let lista = []

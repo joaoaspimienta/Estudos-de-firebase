@@ -22,6 +22,7 @@ function App() {
       alert('GEROU ALGUM ERRO: ' + error)
     })
   }
+
 /*  async function handleAdd(){    
     await firebase.firestore().collection('posts')
     .doc('12345')
@@ -38,22 +39,6 @@ function App() {
   } */
 
   async function buscaPost(){
-    await firebase.firestore().collection('posts')
-    .get()
-    .then((snapshot)=>{
-      let lista = []
-
-      snapshot.forEach((doc)=>{
-        lista.push({
-          id: doc.id,
-          titulo: doc.data().titulo,
-          autor: doc.data().autor
-        })
-      })
-      setPosts(lista)
-    })
-    .catch()
-
 /*     await firebase.firestore().collection('posts')
     .doc('tuTKEq4Gtc2iEI9BXEGe')
     .get()
