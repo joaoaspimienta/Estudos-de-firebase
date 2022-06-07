@@ -10,20 +10,12 @@ function App() {
   useEffect(()=>{
     async function loadPosts(){
       await firebase.firestore().collection('posts')
-      .onSnapshot((doc)=>{
-        let meusPosts = []
-
-        doc.forEach((item)=>{
-          meusPosts.push({
-            id: item.id,
-            titulo: item.data().titulo,
-            autor: item.data().autor
-          })
-        })
-        setPosts(meusPosts)
+      .onSnapshot()
+      .then((item)=>{
+        item.forEach
       })
     }
-    loadPosts();
+    
   }, [])
 
   async function handleAdd(){    
