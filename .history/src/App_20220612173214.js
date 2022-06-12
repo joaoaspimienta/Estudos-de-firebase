@@ -112,17 +112,6 @@ function App() {
       });
   }
 
-  async function excluirPost(id) {
-    await firebase
-      .firestore()
-      .collection("posts")
-      .doc(id)
-      .delete()
-      .then(() => {
-        console.log("este post foi excluido");
-      });
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1>

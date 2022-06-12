@@ -113,14 +113,7 @@ function App() {
   }
 
   async function excluirPost(id) {
-    await firebase
-      .firestore()
-      .collection("posts")
-      .doc(id)
-      .delete()
-      .then(() => {
-        console.log("este post foi excluido");
-      });
+    await firebase.firestore().collection("posts").doc(id).delete;
   }
 
   return (
