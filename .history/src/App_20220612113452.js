@@ -3,9 +3,9 @@ import firebase from "./firebaseConnection";
 import "./style.css";
 
 function App() {
-  const [idPost, setIdPost] = useState("");
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
+  const [idPost, setIdPost] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -96,20 +96,8 @@ function App() {
     await firebase
       .firestore()
       .collection("posts")
-      .doc(idPost)
-      .update({
-        autor: autor,
-        titulo: titulo,
-      })
-      .then(() => {
-        console.log("dados editados com sucesso");
-        setIdPost("");
-        setTitulo("");
-        setAutor("");
-      })
-      .catch(() => {
-        console.log("deu merda");
-      });
+      .update(idPost)
+      .forEach((item) => {});
   }
 
   return (
@@ -138,7 +126,7 @@ function App() {
         />
         <button onClick={handleAdd}>Cadastrar</button>
         <button onClick={buscaPost}>Buscar Post</button>
-        <button onClick={editarPost}>Editar Post</button>
+        <button onClick={editarPost}>Editar Post</button> <br />
         <ul>
           {posts.map((post) => {
             return (

@@ -101,14 +101,9 @@ function App() {
         autor: autor,
         titulo: titulo,
       })
-      .then(() => {
-        console.log("dados editados com sucesso");
-        setIdPost("");
-        setTitulo("");
-        setAutor("");
-      })
+      .then(() => alert("dados editados com sucesso"))
       .catch(() => {
-        console.log("deu merda");
+        alert("deu merda");
       });
   }
 
@@ -138,7 +133,7 @@ function App() {
         />
         <button onClick={handleAdd}>Cadastrar</button>
         <button onClick={buscaPost}>Buscar Post</button>
-        <button onClick={editarPost}>Editar Post</button>
+        <button onClick={editarPost}>Editar Post</button> <br />
         <ul>
           {posts.map((post) => {
             return (

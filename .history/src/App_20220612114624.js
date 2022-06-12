@@ -102,13 +102,12 @@ function App() {
         titulo: titulo,
       })
       .then(() => {
-        console.log("dados editados com sucesso");
+        alert("dados editados com sucesso");
         setIdPost("");
-        setTitulo("");
         setAutor("");
       })
       .catch(() => {
-        console.log("deu merda");
+        alert("deu merda");
       });
   }
 

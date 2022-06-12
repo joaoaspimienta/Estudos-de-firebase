@@ -3,7 +3,6 @@ import firebase from "./firebaseConnection";
 import "./style.css";
 
 function App() {
-  const [idPost, setIdPost] = useState("");
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [posts, setPosts] = useState([]);
@@ -92,38 +91,12 @@ function App() {
     }) */
   }
 
-  async function editarPost() {
-    await firebase
-      .firestore()
-      .collection("posts")
-      .doc(idPost)
-      .update({
-        autor: autor,
-        titulo: titulo,
-      })
-      .then(() => {
-        console.log("dados editados com sucesso");
-        setIdPost("");
-        setTitulo("");
-        setAutor("");
-      })
-      .catch(() => {
-        console.log("deu merda");
-      });
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1>
       <br />
 
       <div className="container">
-        <label>ID:</label>
-        <input
-          type="text"
-          value={idPost}
-          onChange={(e) => setIdPost(e.target.value)}
-        />
         <label>Titulo: </label>
         <textarea
           type="text"
@@ -137,14 +110,12 @@ function App() {
           onChange={(e) => setAutor(e.target.value)}
         />
         <button onClick={handleAdd}>Cadastrar</button>
-        <button onClick={buscaPost}>Buscar Post</button>
-        <button onClick={editarPost}>Editar Post</button>
+        <button onClick={buscaPost}>Buscar Post</button> <br />
         <ul>
           {posts.map((post) => {
             return (
               <li key={post.id}>
                 <span>ID: {post.id}</span>
-                <br />
                 <span>Titulo: {post.titulo}</span> <br />
                 <span>Autor: {post.autor}</span> <br />
                 <br />
