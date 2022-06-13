@@ -125,26 +125,11 @@ function App() {
       });
   }
 
-  async function novoUsuario() {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, senha)
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((error) => {
-        if (error.code === "auth/weak-password") {
-          alert("senha muito fraca");
-        } else if (error.code === "auth/email-already-in-use") {
-          alert("Esse email ja existe!");
-        }
-      });
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1>
       <br />
+
       <div className="container">
         <label>Email</label>
         <input
@@ -158,10 +143,8 @@ function App() {
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
-        <button onClick={novoUsuario}>Cadastrar</button>
       </div>
-      <hr /> <br />
-      <h2>Banco de dados:</h2>
+
       <div className="container">
         <label>ID:</label>
         <input

@@ -126,19 +126,18 @@ function App() {
   }
 
   async function novoUsuario() {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, senha)
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((error) => {
-        if (error.code === "auth/weak-password") {
-          alert("senha muito fraca");
-        } else if (error.code === "auth/email-already-in-use") {
-          alert("Esse email ja existe!");
+    await firebase.auth().createUserWithEmailAndPassword(email, senha)
+    .then((value)=>{
+      console.log(value)
+    })
+    .catch((error)=>{
+      if(error.code === 'auth/weak-password'){
+        alert('senha muito fraca')}
+        else if(error.code === 'auth/email-already-in-use'){
+          alert('Esse email ja existe!')
         }
-      });
+      }
+    })
   }
 
   return (
