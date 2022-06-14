@@ -166,18 +166,6 @@ function App() {
     await firebase.auth().signOut();
   }
 
-  async function fazerLogin() {
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, senha)
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((error) => {
-        console.log("Erro ao fazer o login" + error);
-      });
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1>

@@ -44,7 +44,6 @@ function App() {
           });
         } else {
           setUser(false);
-          setUserLogged({});
         }
       });
     }
@@ -166,30 +165,9 @@ function App() {
     await firebase.auth().signOut();
   }
 
-  async function fazerLogin() {
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, senha)
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((error) => {
-        console.log("Erro ao fazer o login" + error);
-      });
-  }
-
   return (
     <div>
       <h1>ReactJS + Firebase</h1>
-      {user && (
-        <div>
-          <strong>Seja bem vindo! (Você está logado!)</strong> <br />
-          <span>
-            {userLogged.uid} - {userLogged.email}
-          </span>{" "}
-          <br /> <br />
-        </div>
-      )}
       <br />
       <div className="container">
         <label>Email</label>
@@ -204,7 +182,6 @@ function App() {
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
-        <button onClick={fazerLogin}>Fazer Login</button>
         <button onClick={novoUsuario}>Cadastrar</button>
         <button onClick={logout}>Sair da conta!</button>
       </div>

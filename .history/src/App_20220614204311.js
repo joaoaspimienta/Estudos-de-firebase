@@ -170,12 +170,10 @@ function App() {
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, senha)
-      .then((value) => {
-        console.log(value);
+      .then(() => {
+        console.log("hue");
       })
-      .catch((error) => {
-        console.log("Erro ao fazer o login" + error);
-      });
+      .catch(console.log("sefudeu"));
   }
 
   return (
