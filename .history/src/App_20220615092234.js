@@ -12,22 +12,8 @@ function App() {
     await firebase
       .auth()
       .createUserWithEmailAndPassword(email, senha)
-      .then(async (value) => {
-        await firebase
-          .firestore()
-          .collection("users")
-          .doc(value.user.uid)
-          .set({
-            nome: nome,
-            cargo: cargo,
-            status: true,
-          })
-          .then(() => {
-            setNome("");
-            setCargo("");
-            setEmail("");
-            setSenha("");
-          });
+      .then((value) => {
+        console.log(value);
       })
       .catch((error) => {
         if (error.code === "auth/weak-password") {
