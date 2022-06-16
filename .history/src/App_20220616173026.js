@@ -41,30 +41,18 @@ function App() {
 
   async function logout() {
     await firebase.auth().signOut();
-    setUser({});
   }
 
   async function login() {
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, senha)
-      .then(async (value) => {
-        await firebase
-          .firestore()
-          .collection("users")
-          .doc(value.user.uid)
-          .get()
-          .then((snapshot) => {
-            setUser({
-              nome: snapshot.data().nome,
-              cargo: snapshot.data().cargo,
-              status: snapshot.data().status,
-              email: value.user.email,
-            });
-          });
-      })
-      .catch((error) => {
-        alert("erro ao logar" + error);
+      .then((value) => {
+        setUser({
+          nome: nome,
+          cargo: cargo,
+          uid: value.user.uid,
+        });
       });
   }
 
@@ -101,17 +89,9 @@ function App() {
         <button onClick={login}>Fazer Login</button>
         <button onClick={novoUsuario}>Cadastrar</button>
         <button onClick={logout}>Sair da conta!</button>
+
+        {Object.keys(user) && <div>{user.name}</div>}
       </div>
-      <hr />
-      <br />
-      {Object.keys(user).length > 0 && (
-        <>
-          <div>{`Nome: ${user.nome}`}</div>
-          <div>{`Cargo: ${user.cargo}`}</div>
-          <div>{`Email: ${user.email}`}</div>
-          <div>{user.status ? "Status: Ativado" : "Status: Desativado"}</div>
-        </>
-      )}
     </div>
   );
 }

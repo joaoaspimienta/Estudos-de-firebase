@@ -41,7 +41,6 @@ function App() {
 
   async function logout() {
     await firebase.auth().signOut();
-    setUser({});
   }
 
   async function login() {
@@ -106,10 +105,10 @@ function App() {
       <br />
       {Object.keys(user).length > 0 && (
         <>
-          <div>{`Nome: ${user.nome}`}</div>
-          <div>{`Cargo: ${user.cargo}`}</div>
-          <div>{`Email: ${user.email}`}</div>
-          <div>{user.status ? "Status: Ativado" : "Status: Desativado"}</div>
+          <div>{user.nome}</div>
+          <div>{user.cargo}</div>
+          <div>{String(user.status)}</div>
+          <div>{user.email}</div>
         </>
       )}
     </div>

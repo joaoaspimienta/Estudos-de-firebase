@@ -41,7 +41,6 @@ function App() {
 
   async function logout() {
     await firebase.auth().signOut();
-    setUser({});
   }
 
   async function login() {

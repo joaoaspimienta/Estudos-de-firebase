@@ -41,7 +41,6 @@ function App() {
 
   async function logout() {
     await firebase.auth().signOut();
-    setUser({});
   }
 
   async function login() {
@@ -62,9 +61,9 @@ function App() {
               email: value.user.email,
             });
           });
-      })
-      .catch((error) => {
-        alert("erro ao logar" + error);
+          .catch((error)=>{
+            alert('erro ao logar' + error)
+          })
       });
   }
 
@@ -101,17 +100,9 @@ function App() {
         <button onClick={login}>Fazer Login</button>
         <button onClick={novoUsuario}>Cadastrar</button>
         <button onClick={logout}>Sair da conta!</button>
+
+        {Object.keys(user) > 0 && <div>{user.nome}</div>}
       </div>
-      <hr />
-      <br />
-      {Object.keys(user).length > 0 && (
-        <>
-          <div>{`Nome: ${user.nome}`}</div>
-          <div>{`Cargo: ${user.cargo}`}</div>
-          <div>{`Email: ${user.email}`}</div>
-          <div>{user.status ? "Status: Ativado" : "Status: Desativado"}</div>
-        </>
-      )}
     </div>
   );
 }
